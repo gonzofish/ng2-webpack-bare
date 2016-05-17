@@ -1,0 +1,7 @@
+<h1>My Message List</h1>
+
+<app-form [message]="newMessage" (add)="addMessage($event)"></app-form>
+
+<ul>
+    <li *ngFor="let message of messages">{{ message }}</li>
+</ul>
