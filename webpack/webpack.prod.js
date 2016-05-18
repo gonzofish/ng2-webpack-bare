@@ -10,8 +10,8 @@ module.exports = {
     debug: false,
     devtool: 'source-map',
     entry: {
-        vendor: ['./src/app/scripts/vendor'],
-        app: ['./src/app/scripts/bootstrap']
+        vendor: ['./src/app/vendor'],
+        app: ['./src/app/bootstrap']
     },
     htmlLoader: {
         caseSensitive: true,

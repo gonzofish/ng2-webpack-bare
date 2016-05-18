@@ -3,38 +3,16 @@
 const childProcess = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const readline = require('readline');
+
+const ask = require('./utils/ask-questions');
+const infom = require('./utils/inform');
 
 const allQuestions = [
     { name: 'readmeName', question: 'README title:' },
     { name: 'repoName', question: 'package.json name:' },
     { name: 'repoUrl', question: 'Repository URL:' }
 ];
-const reader = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
 const rootDir = path.resolve(__dirname, '..');
-
-const askQuestions = (questions, answers) => {
-    const question = questions[0];
-    const remainingQuestions = questions.slice(1);
-
-    reader.question(question.question.trim() + ' ', answer => {
-        if (!!answer) {
-            answers[question.name] = answer;
-
-            if (remainingQuestions.length > 0) {
-                askQuestions(remainingQuestions, answers);
-            } else {
-                reader.close();
-                processAnswers(answers)
-            }
-        } else {
-            askQuestions(questions, answers);
-        }
-    });
-};
 
 const processAnswers = (answers) => {
     createNewPackageJson(answers.repoName, answers.repoUrl);
@@ -45,7 +23,7 @@ const processAnswers = (answers) => {
 };
 
 const createNewPackageJson = (name, repoUrl) => {
-    const defaultPackageJson = path.resolve(rootDir, 'scripts', 'default-meta-files', 'package.json');
+    const defaultPackageJson = path.resolve(rootDir, 'scripts', 'templates', 'meta-files', 'package.json');
     const destinationPackageJson = path.resolve(rootDir, 'package.json');
     let packageJson = fs.readFileSync(defaultPackageJson, 'utf8');
 
@@ -100,10 +78,6 @@ const createGitProject = () => {
     process.chdir(startingDir);
 };
 
-const inform = message => {
-    console.info('>', message);
-};
-
 console.info(`
 ****************************************
 * If you are contributing, press       *
@@ -114,4 +88,4 @@ console.info(`
 * Enjoy!                               *
 ****************************************
 `);
-askQuestions(allQuestions, {});
+ask(allQuestions, processAnswers);

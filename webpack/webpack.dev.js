@@ -7,6 +7,8 @@ const ChunkWebpack = webpack.optimize.CommonsChunkPlugin;
 
 const rootDir = path.resolve(__dirname, '..');
 
+console.info(rootDir);
+
 module.exports = {
     debug: true,
     devServer: {
@@ -14,14 +16,14 @@ module.exports = {
     },
     devtool: 'source-map',
     entry: {
-        app: [ path.resolve(rootDir, 'src/app/scripts/bootstrap') ],
-        vendor: [ path.resolve(rootDir, 'src/app/scripts/vendor') ]
+        app: [ path.resolve(rootDir, 'src', 'app', 'bootstrap') ],
+        vendor: [ path.resolve(rootDir, 'src', 'app', 'vendor') ]
     },
     module: {
         loaders: [
-            { loader: 'raw!sass', test: /.scss$/ },
-            { loader: 'raw', test: /.html$/ },
-            { exclude: /node_modules/, loader: 'ts', test: /.ts$/ }
+            { loader: 'raw!sass', test: /\.scss$/ },
+            { loader: 'raw', test: /\.html$/ },
+            { exclude: /node_modules/, loader: 'ts', test: /\.ts$/ }
         ]
     },
     output: {
@@ -37,7 +39,7 @@ module.exports = {
         new HtmlWebpack({
             filename: 'index.html',
             inject: 'body',
-            template: path.resolve(rootDir, 'src/app/index.html')
+            template: path.resolve(rootDir, 'src', 'app', 'index.html')
         })
     ],
     resolve: {

@@ -4,7 +4,7 @@
 module.exports = function(config) {
   config.set({
     autoWatch: true,
-    browsers: ['Chrome', 'PhantomJS2'],
+    browsers: ['Chrome', 'PhantomJS'],
     files: [
       '../../../node_modules/es6-shim/es6-shim.min.js',
       'karma.entry.js'
@@ -20,9 +20,9 @@ module.exports = function(config) {
     },
     reporters: ['dots'],
     singleRun: false,
-    webpack: require('../../../webpack/webpack.test.js'),
+    webpack: require('../../../webpack/webpack.test'),
     webpackServer: {
         noInfo: true
     }
   });
-}
+};
