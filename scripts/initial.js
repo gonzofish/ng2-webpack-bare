@@ -4,8 +4,8 @@ const childProcess = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const ask = require('./scaffold/ask');
-const infom = require('./utils/inform');
+const ask = require('balsa/libs/ask');
+const inform = require('./inform');
 
 const allQuestions = [
     { name: 'readmeName', question: 'README title:' },
@@ -14,12 +14,12 @@ const allQuestions = [
 ];
 const rootDir = path.resolve(__dirname, '..');
 
-const processAnswers = (answers) => {
-    createNewPackageJson(answers.repoName, answers.repoUrl);
-    createNewReadme(answers.readmeName);
+const processAnswers = answers => {
+    createNewPackageJson(answers[1], answers[2]);
+    createNewReadme(answers[0]);
     initGit();
 
-    console.info(`"${answers.readmeName}" is all set up!`);
+    console.info(`"${answers[0].answer}" is all set up!`);
 };
 
 const createNewPackageJson = (name, repoUrl) => {
@@ -29,16 +29,16 @@ const createNewPackageJson = (name, repoUrl) => {
 
     inform(`Creating new "package.json"`);
 
-    packageJson = packageJson.replace('ng2-webpack-bare', name)
+    packageJson = packageJson.replace('ng2-webpack-bare', name.answer)
         .replace('"version": "1.0.0"', '"version": "0.0.0"')
-        .replace('"url": "https://github.com/gonzofish/ng2-webpack-bare.git"', `"url": "${repoUrl}"`);
+        .replace('"url": "https://github.com/gonzofish/ng2-webpack-bare.git"', `"url": "${repoUrl.answer}"`);
 
     fs.writeFileSync(destinationPackageJson, packageJson, { encoding: 'utf8' });
 };
 
 const createNewReadme = readmeTitle => {
     const destinationReadme = path.resolve(rootDir, 'README.md');
-    const readme = `#${readmeTitle}`;
+    const readme = `#${readmeTitle.answer}`;
 
     inform(`Creating new "README.md"`);
     fs.writeFileSync(destinationReadme, readme, { encoding: 'utf8' });

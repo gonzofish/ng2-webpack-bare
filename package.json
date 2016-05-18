@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack/webpack.prod.js",
+    "initial": "node ./scripts/initial",
     "lint": "tslint ./src/**/*.ts",
     "new": "node ./scripts/new",
     "new:component": "node ./scripts/new --component",
