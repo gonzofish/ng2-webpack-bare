@@ -4,7 +4,7 @@ const childProcess = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const ask = require('./utils/ask-questions');
+const ask = require('./scaffold/ask');
 const infom = require('./utils/inform');
 
 const allQuestions = [
