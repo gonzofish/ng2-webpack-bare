@@ -1,7 +1,7 @@
 {
   "name": "ng2-webpack-bare",
   "version": "1.0.0",
-  "description": "",
+  "description": "A bare-bones Angular 2 + Webpack project with light scaffolding",
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack/webpack.prod.js",
@@ -12,8 +12,7 @@
     "postinstall": "typings install",
     "start": "webpack-dev-server --config ./webpack/webpack.dev.js",
     "test": "karma start ./src/test/karma/karma.conf.js",
-    "test:headless": "karma start ./src/test/karma/karma.conf.js --browsers PhantomJS",
-    "typings": "typings"
+    "test:headless": "karma start ./src/test/karma/karma.conf.js --browsers PhantomJS"
   },
   "keywords": [],
   "author": "",
