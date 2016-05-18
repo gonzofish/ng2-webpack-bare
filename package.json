@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack/webpack.prod.js",
     "lint": "tslint ./src/**/*.ts",
+    "new": "node ./scripts/scaffold",
     "new:component": "node ./scripts/scaffold --component",
     "postinstall": "typings install",
     "start": "webpack-dev-server --config ./webpack/webpack.dev.js",

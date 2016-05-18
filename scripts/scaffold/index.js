@@ -2,18 +2,26 @@
 
 const path = require('path');
 
-const scaffold = () => {
-    const generator = getScaffoldGenerator(process.argv[2]);
+const ask = require('../ask-questions');
+
+const scaffold = (cliArgs) => {
+    const generator = getScaffoldGenerator(cliArgs[0]);
+    let generatorArgs;
 
     if (typeof generator === 'function') {
-        generator();
+        generatorArgs = cliArgs.length > 1 ? cliArgs.slice(1) : undefined;
+        generator(generatorArgs);
+    } else {
+        askForType();
     }
 };
 
 const getScaffoldGenerator = type => {
     let generator;
 
-    switch(type.replace(/^\-+/, '')) {
+    type = type ? type.replace(/^\-+/, '') : type;
+
+    switch(type) {
         case 'component':
             generator = require('./component');
             break;
@@ -22,8 +30,14 @@ const getScaffoldGenerator = type => {
     return generator;
 };
 
+const askForType = () => {
+    ask([{ name: 'type' , question: 'Scaffold what (component)?' }], (answers) => {
+        scaffold(answers.type.split(/\s+/));
+    });
+};
+
 if (!module.parent) {
-    scaffold();
+    scaffold(process.argv.slice(2));
 }
 
 module.exports = scaffold;

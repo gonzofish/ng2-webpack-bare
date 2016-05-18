@@ -9,10 +9,10 @@ const inform = require('../inform');
 const rootDir = path.resolve(__dirname, '..', '..');
 
 module.exports = (selector) => {
-    if (!selector) {
+    if (!selector || selector.length === 0) {
         ask(getQuestions(), processAnswers);
     } else {
-        processAnswers({ selector: selector });
+        processAnswers({ selector: selector[0] });
     }
 };
 
