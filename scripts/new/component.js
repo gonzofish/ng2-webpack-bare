@@ -1,9 +1,9 @@
 'use strict';
 
+const balsa = require('balsa');
 const fs = require('fs');
 const path = require('path');
 
-const scaffold = require('../scaffold');
 const inform = require('../inform');
 
 const rootDir = path.resolve(__dirname, '..', '..');
@@ -12,9 +12,9 @@ module.exports = (selector) => {
     const files = getFiles();
 
     if (!selector || selector.length === 0) {
-        scaffold.ask(getQuestions(), files);
+        balsa.ask(getQuestions(), files);
     } else {
-        scaffold.process([
+        balsa.process([
             { name: 'selector', answer: selector[0] },
             { name: 'componentName', answer: dashToCap(selector[0]) }
         ], files);

@@ -29,6 +29,7 @@
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
+    "balsa": "git+https://github.com/gonzofish/balsa.git",
     "html-webpack-plugin": "^2.16.1",
     "jasmine-core": "^2.4.1",
     "karma": "^0.13.22",

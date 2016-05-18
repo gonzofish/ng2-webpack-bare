@@ -1,8 +1,8 @@
 'use strict';
 
+const ask = require('balsa/libs/ask');
 const path = require('path');
 
-const ask = require('../scaffold/ask');
 
 const scaffold = (cliArgs) => {
     const generator = getScaffoldGenerator(cliArgs[0]);
@@ -31,7 +31,7 @@ const getScaffoldGenerator = type => {
 };
 
 const askForType = () => {
-    ask([{ name: 'type' , question: 'Scaffold what (component)?' }], (answers) => {
+    ask([{ name: 'type' , question: 'Scaffold what (options: component)?' }], (answers) => {
         scaffold(answers[0].answer.split(/\s+/));
     });
 };
