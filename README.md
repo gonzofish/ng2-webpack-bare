@@ -15,7 +15,8 @@ It's pretty darn simple:
 1. Clone this repository (I would fire up a console/terminal and run `git clone https://github.com/gonzofish/ng2-webpack-bare`)
     1. Run `git clone https://github.com/gonzofish/ng2-webpack-bare my-new-app` to clone it to a directory named `my-new-app`
     instead of `ng2-webpack-bare`.
-2. Run `npm i` (an alias for `npm install`)...this could take a while, sorry.
+2. Change into the directory from the previous step.
+3. Run `npm i` (an alias for `npm install`)...this could take a while, sorry.
 
 You're pretty much ready to go! Check out the next section to see how to easily make the cloned repository your own.
 
@@ -23,19 +24,16 @@ You're pretty much ready to go! Check out the next section to see how to easily 
 
 This repo also has a scaffolding component to it. It uses my super-light scaffolding library,
 called [Balsa](https://github.com/gonzofish/balsa) to ask you questions & generate files. Balsa
-has zero dependencies and only uses Node.js built-in functions.
+has zero dependencies and only uses Node.js built-in functions. I also built a setup to use Balsa
+specific for Angular 2 & Webpack, creatively named
+[ng2-webpack-balsa](https://github.com/gonzofish/ng2-webpack-balsa).
 
-There a few commands, available via `npm run`, that you can use:
+To use the scaffolding, use `npm run balsa [command]` where command can be:
 
-- `initial`: creates a new `README.md`, alters `package.json` to reflect your project's name
-and repo URL, then runs `git init`. **Be careful with this, there's no undoing it if you write
-over your existing files!**
-- `new`: creates a new Angular 2 part. This will ask you `Scaffold what`, to which there are two
-ways of answering `{type}` or `{type} {name}` (as of 2016-05-18 only `component` is valid
-for `{type}`).
-    - Just `{type}` will ask you to name the part you are creating.
-    - `{type} {name}` will create that part with the provided name.
-- `new:component`: it's the same as running `new` and answering `component`.
+- `initial`: initializes your project, creating a new README & package.json and re-initializing git
+- `component`: creates a new component, asking you for the selector to use. This will create the application code in
+`src/app/components/[selector]` and create a unit test file at `src/test/components/[selector].spec.ts`.
+    - `component [selector]`: will create a new component with the selector provided
 
 ## NPM Scripts
 
