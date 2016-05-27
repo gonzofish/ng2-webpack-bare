@@ -28,12 +28,9 @@ has zero dependencies and only uses Node.js built-in functions. I also built a s
 specific for Angular 2 & Webpack, creatively named
 [ng2-webpack-balsa](https://github.com/gonzofish/ng2-webpack-balsa).
 
-To use the scaffolding, use `npm run balsa [command]` where command can be:
+Please see the [ng2-webpack-balsa](https://github.com/gonzofish/ng2-webpack-balsa) repository for a list of available
+commands. All comands are available by using `npm run balsa `.
 
-- `initial`: initializes your project, creating a new README & package.json and re-initializing git
-- `component`: creates a new component, asking you for the selector to use. This will create the application code in
-`src/app/components/[selector]` and create a unit test file at `src/test/components/[selector].spec.ts`.
-    - `component [selector]`: will create a new component with the selector provided
 
 ## NPM Scripts
 
