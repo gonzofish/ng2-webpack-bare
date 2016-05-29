@@ -8,6 +8,10 @@ So I made this. And, if you're reading this, you can use it too.
 
 Oh, and it comes with some light scaffolding capabilities.
 
+## Requirements
+
+As of now, you'll need [Node 5.0+](https://nodejs.org/en/download/releases/) & NPM to get this all working.
+
 ## How Do I Use It?
 
 It's pretty darn simple:
