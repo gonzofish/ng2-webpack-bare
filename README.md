@@ -41,6 +41,7 @@ commands. All comands are available by using `npm run balsa `.
 
 Besides the scaffolding I created some NPM scripts you can use, too (via `npm run`):
 
+- `balsa`: run Balsa scaffolding
 - `build`: creates the distribution bundle
 - `link`: checks code for errors
 - `start`: runs the Webpack dev server
