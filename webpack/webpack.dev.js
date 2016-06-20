@@ -12,7 +12,8 @@ console.info(rootDir);
 module.exports = {
     debug: true,
     devServer: {
-        contentBase: path.resolve(rootDir, 'dist')
+        contentBase: path.resolve(rootDir, 'dist'),
+        port: 9000
     },
     devtool: 'source-map',
     entry: {
